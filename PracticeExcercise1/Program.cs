@@ -9,6 +9,7 @@ class Program
 
         arrayList.Prepend(8);
         arrayList.Prepend(4);
+        arrayList.RemoveAt(0);
         arrayList.Prepend(2);
         arrayList.Prepend(1);
         arrayList.Prepend(0);

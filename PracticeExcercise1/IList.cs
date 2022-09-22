@@ -10,9 +10,9 @@ namespace PracticeExercise1
 		void Remove(int value);
 		void RemoveAt(int index);
 
-		int First { get; set; }
-		int Last { get; set; }
-        bool IsEmpty { get; set; }
+		int? First { get; }
+		int? Last { get; set; }
+        bool IsEmpty { get; }
 		int Length { get; }
 
         int FirstIndexOf(int value);
