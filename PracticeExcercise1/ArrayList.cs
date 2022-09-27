@@ -15,39 +15,36 @@ namespace PracticeExercise1
             length = 0;
 		}
 
-        // TODO
         /// <summary>
         /// Returns first element in list, null if empty.
         /// </summary>
-        //int? IList.First
-        //{
-            
-        //    {
-        //        //if (IsEmpty)
-        //        //{
-        //        //    throw null;
-        //        //}
-        //        //else 
-        //        //{
-        //        //    return array[0];
-        //        //}
+        int? IList.First
+        {
+            //get
+            //{
+            //    if (IsEmpty)
+            //    {
+            //        return null;
+            //    }
+            //    else
+            //    {
+            //        return array[0];
+            //    }
+            //}
 
-                
-
-                
-        //    }
-        //}
-
-        // TODO
-            /// <summary>
-            /// Returns last element in list, null if empty.
-            /// </summary>
-        public int? Last 
-        { 
-            get => throw new NotImplementedException(); set => throw new NotImplementedException(); 
+            get => IsEmpty ? null : array[0];
         }
 
-        // TODO
+        
+        /// <summary>
+        /// Returns last element in list, null if empty.
+        /// </summary>
+        int? IList.Last
+        { 
+            get => IsEmpty ? null : array[length + 1]; 
+        }
+
+        
         /// <summary>
         /// Returns true if list is has no elements; false otherwise.
         /// </summary>
@@ -63,8 +60,9 @@ namespace PracticeExercise1
         {
             get => length;
         }
+        
 
-        // TODO fix capacity bug
+
         /// <summary>
         /// Adds given value to end of list.
         /// </summary>
@@ -93,7 +91,7 @@ namespace PracticeExercise1
             return false;
         }
 
-        // TODO
+        
         /// <summary>
         /// Find index of first element with matching value.
         /// </summary>
@@ -101,10 +99,18 @@ namespace PracticeExercise1
         /// <returns>Index of first element with value; -1 if element is not found</returns>
         public int FirstIndexOf(int value)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < Length; i++)
+            {
+                if ( array[value] == array[0])
+                {
+                    return array[value];
+                }
+                
+            }
+            return -1;
         }
 
-        // TODO
+       
         /// <summary>
         /// Insert new value after first instance of existing value.
         /// If existingValue is not in list, then add new value to end of list.
@@ -113,10 +119,22 @@ namespace PracticeExercise1
         /// <param name="existingValue"></param>
         public void InsertAfter(int newValue, int existingValue)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < Length; i++)
+            {
+                if (array[i] == existingValue)
+                {
+                    array[i + 1] = newValue;
+                    ShiftRight(newValue);
+                }
+                length++;
+                Append(newValue);
+                
+            }
+            
         }
+    
 
-        // TODO
+       
         /// <summary>
         /// Insert value at given index 
         /// </summary>
@@ -124,7 +142,9 @@ namespace PracticeExercise1
         /// <param name="index"></param>
         public void InsertAt(int value, int index)
         {
-            throw new NotImplementedException();
+            array[index] = value;
+            ShiftRight(array[index + 1]);
+            length++;
         }
 
         /// <summary>
@@ -151,23 +171,30 @@ namespace PracticeExercise1
 
         private void ShiftLeft(int startingIndex)
         {
+            length++;
             for(int i = startingIndex; i < Length; i++)
             {
-                array[startingIndex - 1] = array[i];
+                array[startingIndex] = array[i];
+                
             }
         }
 
-        // TODO
+        
         /// <summary>
         /// Remove first item with given value
         /// </summary>
         /// <param name="value">value of item to be removed</param>
         public void Remove(int value)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < Length; i++)
+            {
+                if( i == value)
+                {
+                    RemoveAt(i);
+                }
+            }
         }
 
-        // TODO
         /// <summary>
         /// Remove item at specififed index.
         /// </summary>
@@ -178,7 +205,7 @@ namespace PracticeExercise1
             length--;
         }
 
-        // TODO
+        
         public override string ToString()
         {
             string str = "[";
@@ -191,6 +218,7 @@ namespace PracticeExercise1
 
             return str;
         }
+
         /// <summary>
         /// Return the element at the given index.
         /// </summary>

@@ -3,6 +3,8 @@ namespace PracticeExercise1
 {
 	public interface IList
 	{
+		int Get(int index);
+
 		void Append(int value);
 		void Prepend(int value);
 		void InsertAfter(int newValue, int existingValue);
@@ -11,7 +13,7 @@ namespace PracticeExercise1
 		void RemoveAt(int index);
 
 		int? First { get; }
-		int? Last { get; set; }
+		int? Last { get; }
         bool IsEmpty { get; }
 		int Length { get; }
 
