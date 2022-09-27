@@ -11,7 +11,6 @@ namespace UnitTests
         [TestMethod]
         public void TestLength()
         {
-
             IList list = new ArrayList();
 
             Assert.AreEqual(0, list.Length);
@@ -35,7 +34,6 @@ namespace UnitTests
         [TestMethod]
         public void TestIsEmpty()
         {
-
             IList list = new ArrayList();
 
             Assert.IsTrue(list.IsEmpty);
@@ -54,10 +52,14 @@ namespace UnitTests
         {
             IList list = new ArrayList();
 
-            Assert.ThrowsException<NullReferenceException>(() =>
-            {
-                int i = list.First;
-            });
+            //Assert.ThrowsException<NullReferenceException>(() =>
+            //{
+            //    int i = list.First;
+            //});
+
+            int? nullFirst = list.First;
+
+            Assert.IsNull(nullFirst);
 
             for (int i = 0; i < 10; i++)
             {
@@ -78,13 +80,16 @@ namespace UnitTests
         [TestMethod]
         public void TestLast()
         {
-
             IList list = new ArrayList();
 
-            Assert.ThrowsException<NullReferenceException>(() =>
-            {
-                int i = list.Last;
-            });
+            //Assert.ThrowsException<NullReferenceException>(() =>
+            //{
+            //    int i = list.Last;
+            //});
+
+            int? nullLast = list.Last;
+
+            Assert.IsNull(nullLast);
 
             list.Append(0);
 
@@ -248,7 +253,6 @@ namespace UnitTests
         [TestMethod]
         public void TestRemove()
         {
-
             IList list = new ArrayList();
             for (int i = 0; i < 5; i++)
             {
@@ -363,6 +367,28 @@ namespace UnitTests
             Assert.AreEqual("[0,1,2,3,4]", list.ToString().Replace(" ", ""));
 
             Assert.AreEqual("[0,1,2,3,4]", reversed.Reverse().ToString().Replace(" ", ""));
+        }
+
+        [TestMethod]
+        public void TestGet()
+        {
+            IList list = new ArrayList();
+            for (int i = 0; i < 5; i++)
+            {
+                list.Append(i);
+            }
+
+            Assert.AreEqual(0, list.Get(0));
+            Assert.AreEqual(1, list.Get(1));
+            Assert.AreEqual(2, list.Get(2));
+            
+            for (int i = 5; i < 50; i++)
+            {
+                list.Append(i);
+            }
+
+            Assert.AreEqual(45, list.Get(45));
+            Assert.AreEqual(10, list.Get(10));
         }
     }
 
