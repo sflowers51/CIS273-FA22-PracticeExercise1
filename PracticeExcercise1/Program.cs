@@ -13,12 +13,9 @@ class Program
         arrayList.Prepend(2);
         arrayList.Prepend(1);
         arrayList.Prepend(0);
-        Console.WriteLine(arrayList);
-        arrayList.RemoveAt(4);
-
 
         Console.WriteLine(arrayList);
-        Console.ReadKey();
+
     }
 }
 

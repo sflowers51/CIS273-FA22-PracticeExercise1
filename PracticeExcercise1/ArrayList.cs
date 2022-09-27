@@ -69,11 +69,6 @@ namespace PracticeExercise1
         /// <param name="value"></param>
         public void Append(int value)
         {
-            if(Length == array.Length)
-            {
-                Resize();
-            }
-
             array[length] = value;
             length++;
         }
@@ -158,11 +153,6 @@ namespace PracticeExercise1
         /// <param name="value"></param>
         public void Prepend(int value)
         {
-            if (Length == array.Length)
-            {
-                Resize();
-            }
-
             // shift elements to right
             ShiftRight(0);
 
@@ -171,7 +161,7 @@ namespace PracticeExercise1
 
         }
 
-        private void ShiftRight(int index)
+        private void ShiftRight( int index)
         {
             for(int i = Length-1; i >= index; i--)
             {
@@ -270,55 +260,6 @@ namespace PracticeExercise1
         {
             Array.Resize(ref array, 2 * array.Length);
         }
-
-        /// <summary>
-        /// Return the element at the given index.
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns>The element at the given index.</returns>
-        public int Get(int index)
-        {
-            if(index > Length - 1 || index < 0)
-            {
-                throw new IndexOutOfRangeException();
-            }
-
-            int element = array[index];
-
-            return element;
-
-        }
-
-        /// <summary>
-        /// Remove all elements from list
-        /// </summary>
-        public void Clear()
-        {
-            length = 0;
-        }
-
-        /// <summary>
-        /// Return a new copy of list in reverse order
-        /// </summary>
-        /// <returns></returns>
-        public IList Reverse()
-        {
-            IList reverse = new ArrayList();
-
-            for(int i = 0; i < Length; i++)
-            {
-                reverse.Prepend(array[i]);
-            }
-
-            return reverse;
-        }
-
-
-        private void Resize()
-        {
-            Array.Resize(ref array, 2 * array.Length);
-        }
-
     }
 }
 
